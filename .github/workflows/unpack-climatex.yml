@@ -1,0 +1,90 @@
+name: Unpack ClimateX Source
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ClimateX.ai-main.zip'
+      - '.github/workflows/unpack-climatex.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: unpack-climatex-main
+  cancel-in-progress: false
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f ClimateX.ai-main.zip
+          unzip -t ClimateX.ai-main.zip
+
+      - name: Extract archive to staging directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .unpack-climatex
+          mkdir .unpack-climatex
+          unzip -q ClimateX.ai-main.zip -d .unpack-climatex
+          echo 'Archive top-level contents:'
+          find .unpack-climatex -mindepth 1 -maxdepth 2 -type d -o -type f | head -100
+
+      - name: Normalize archive root into repository root
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s dotglob nullglob
+
+          entries=(.unpack-climatex/*)
+          if [ ${#entries[@]} -eq 1 ] && [ -d "${entries[0]}" ]; then
+            SOURCE="${entries[0]}"
+          else
+            SOURCE='.unpack-climatex'
+          fi
+
+          for item in "$SOURCE"/*; do
+            name="$(basename "$item")"
+            case "$name" in
+              .git|.github|ClimateX.ai-main.zip) continue ;;
+            esac
+            rm -rf -- "$name"
+            mv -- "$item" ./
+          done
+
+          rm -rf .unpack-climatex
+
+      - name: Remove source ZIP after successful extraction
+        shell: bash
+        run: rm -f ClimateX.ai-main.zip
+
+      - name: Show resulting repository tree
+        shell: bash
+        run: |
+          echo 'Extracted source:'
+          find . -maxdepth 3 -not -path './.git/*' | sort | head -500
+
+      - name: Commit extracted source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No extraction changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Unpack ClimateX source into repository'
+          git push origin HEAD:main
