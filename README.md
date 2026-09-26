@@ -1,226 +1,368 @@
-# 🌍 ClimateX.ai - PRAKRITI
+# 🌍 Climate Crew
 
-<div align="center">
-  <img src="assets/logo.png" width="200" alt="ClimateX Logo"/>
-  <h3>Planetary Risk Assessment & Knowledge-driven Real-time Intelligence for Threat Monitoring & Impact Analysis</h3>
-  <p><strong>The Operating System for Planetary Intelligence</strong></p>
-  <p>Powered by Qdrant • Built with FastAPI, LangChain & React • 12 Specialized Agents</p>
-</div>
+## Evidence-driven multi-agent climate research and discovery
 
----
+Climate Crew is an open climate-research system built around teams of specialised AI agents that investigate questions, gather observational and published evidence, challenge competing explanations, reproduce results, quantify uncertainty, and advance only well-supported findings toward human validation.
 
-## 🎯 Vision
+> **Mission:** build an auditable research engine that helps people investigate climate problems faster without confusing model agreement with scientific evidence.
 
-ClimateX.ai is not just a dashboard—it's an **autonomous swarm of AI agents** working 24/7 to decode the complex feedback loops between **Earth's Climate Systems** and **Global Financial Markets**.
+Climate Crew evolves the existing ClimateX/Convolve multi-agent platform rather than replacing it. The project retains its deep-research engine, domain agents, RAG, memory, message bus, debate, simulations, evaluation framework, climate-data integrations, FastAPI backend and React/TypeScript interface, while reorganising them around rigorous scientific research.
 
 ---
 
-## 🏗️ System Architecture
+## 🔬 Research lifecycle
 
-<div align="center">
-  <img src="assets/ClimateX_System_Architecture.png" alt="System Architecture"/>
-</div>
-
----
-
-## 🚀 Core Capabilities
-
-By integrating satellite data (NASA FIRMS, ESA Copernicus) with financial feeds (Yahoo Finance) and regulatory databases, ClimateX.ai delivers:
-
-| Capability | Description |
-|------------|-------------|
-| 🔥 **Disaster Intelligence** | Unified monitoring of wildfires, floods, earthquakes from NASA, GDACS, NOAA |
-| 🤖 **Ambient Agents** | Autonomous agents detect threats and alert without human queries |
-| 📊 **Climate-Finance Nexus** | Real-time correlation of climate events to stock movements |
-| 📚 **Deep Research** | AI synthesizes papers, filings, reports into actionable briefs |
-| 🗺️ **Evacuation Routing** | Auto-generated safe routes avoiding hazards with shelter mapping |
-| 🔮 **Climate Time Machine** | Scenario simulations (+2°C, +3°C) with economic projections |
-
----
-
-## 🤖 Agent Architecture
-
-### Base Agent Framework
-<div align="center">
-  <img src="assets/BaseAgent.png" alt="Base Agent Architecture" width="800"/>
-</div>
-
----
-
-## 🌐 Specialized Agents
-
-### 1. Climate Disaster Management Agent
-<div align="center">
-  <img src="assets/Climate_Disaster_Management.png" alt="Disaster Management" width="800"/>
-</div>
-
-- **Role**: Crisis Commander
-- Monitors real-time alerts from GDACS, NASA FIRMS, USGS
-- Calculates distance and spread speed of hazards
-- Locates nearest hospitals and shelters
-- Generates safe evacuation routes avoiding the danger zone
-
----
-
-### 2. Climate Finance Orchestrator
-<div align="center">
-  <img src="assets/climate_finance_refined.png" alt="Climate Finance Orchestrator" width="800"/>
-</div>
-
-- **Role**: Financial Analyst
-- Tracks stock tickers and correlates volatility with climate events
-- ESG scoring with regulatory citations
-- Carbon price tracking (EU ETS, California Cap-and-Trade)
-- Portfolio climate exposure analysis
-
----
-
-### 3. ClimateX Audit Agent
-<div align="center">
-  <img src="assets/ClimateX_audit_agent.png" alt="Audit Agent" width="800"/>
-</div>
-
-- **Role**: Compliance Officer
-- Supply chain climate resilience verification
-- TCFD/CSRD compliance monitoring
-- Audit trail generation with source citations
-
----
-
-### 4. News Intelligence Agent
-<div align="center">
-  <img src="assets/News_Intelligence.png" alt="News Intelligence" width="800"/>
-</div>
-
-- **Role**: Information Synthesizer
-- Real-time ingestion of climate and market news
-- Multi-source data fusion and deduplication
-- Sentiment analysis and impact scoring
-
----
-
-### 5. Retail Analytics Agent
-<div align="center">
-  <img src="assets/Retailer_agent.png" alt="Retail Analytics" width="800"/>
-</div>
-
-- **Role**: Supply Chain Optimizer
-- Weather-driven demand forecasting
-- Inventory optimization based on climate predictions
-- Supply chain risk assessment
-
----
-
-### 6. Adversarial Event Generation (Climate Time Machine)
-<div align="center">
-  <img src="assets/Adversarial_Event_Generation.png" alt="Adversarial Event Generation" width="800"/>
-</div>
-
-- **Role**: Futurist Simulator
-- Generates detailed scenarios for +2°C, +3°C warming
-- Economic collapse projections and crop failure analysis
-- Visual scenario generation with AI imagery
-
----
-
-### 7. STRIDE Security Framework
-<div align="center">
-  <img src="assets/STRIDE.png" alt="STRIDE Framework" width="800"/>
-</div>
-
-- **Role**: Security Analyst
-- Threat modeling for climate infrastructure
-- Vulnerability assessment and mitigation strategies
-
----
-
-## 📊 Key Statistics
-
-| Metric | Value | Source |
-|--------|-------|--------|
-| ESA satellite data operationalized | < 1% | ESA, 2023 |
-| Climate Tech market (2025) | $32B | BloombergNEF |
-| Climate Tech market (2034) | $80B+ | BloombergNEF |
-| Companies under CSRD/TCFD by 2030 | 50,000+ | EU Commission |
-| Institutional investors prioritizing climate data | 83% | PwC, 2024 |
-
----
-
-## ⚡ Quick Start Guide
-
-### Clone the Repository
-```bash
-git clone https://github.com/SRINJOY59/Convolve_MAS.git
-cd Convolve_MAS
+```text
+Research Question
+      ↓
+Research Project
+      ↓
+Problem Decomposition
+      ↓
+Competing Hypotheses
+      ↓
+Independent Investigation
+      ↓
+Evidence Collection + Provenance
+      ↓
+Cross-Agent Challenge
+      ↓
+Falsification Attempts
+      ↓
+Replication
+      ↓
+Uncertainty Analysis
+      ↓
+Scientific Synthesis
+      ↓
+Finding
+      ↓
+Novelty / Prior-Art Review
+      ↓
+Discovery Candidate
+      ↓
+Human / Expert Validation
 ```
 
-### Backend (Brain)
+The durable unit of work is a **Research Project**, not a chat answer. Projects preserve hypotheses, evidence, methods, datasets, assumptions, contradictions, replications, uncertainty and research history.
+
+---
+
+## 🧠 Core principles
+
+### Evidence before consensus
+Multiple agents agreeing does not make a claim true. Climate Crew tracks the evidence supporting a claim and the independence of that evidence.
+
+### Memory is not evidence
+Agent memory helps researchers work efficiently. Scientific claims require attributable evidence, observations, datasets, methods or reproducible calculations.
+
+### Contradictions are first-class research objects
+Conflicting evidence is preserved and investigated rather than silently averaged away during synthesis.
+
+### Findings must survive challenge
+Important findings should face criticism, attempted falsification, replication and uncertainty analysis before becoming discovery candidates.
+
+### Provenance must survive the pipeline
+Research outputs should remain traceable to their sources, transformations, models and methods.
+
+### Humans remain part of validation
+Climate Crew can generate and assess discovery candidates. It does not declare scientific truth merely because an agent or model says so.
+
+---
+
+## 👥 The Crew
+
+Climate Crew organises existing and future agents into scientific roles.
+
+### Research leadership
+- **Research Director** — owns the research mission and decomposition.
+- **Strategic Planner** — turns questions into investigation plans.
+- **Research Coordinator** — routes work and manages dependencies.
+
+### Climate and Earth-system specialists
+Existing Climate Crew capabilities provide foundations for specialists covering:
+- climate anomalies
+- atmospheric and air-quality systems
+- carbon emissions
+- oceans
+- biodiversity and ecology
+- deforestation
+- wildfire
+- flood and disaster systems
+- geospatial and satellite intelligence
+- climate finance, ESG and regulatory risk
+
+The architecture is designed to expand into environmental chemistry, cryosphere science, energy systems, materials research and other climate-relevant disciplines.
+
+### Research specialists
+- Literature Researcher
+- Dataset Researcher
+- Observational Data Researcher
+- Modelling Agent
+- Statistical Analyst
+- Experimental Designer
+- Novelty / Prior-Art Researcher
+
+### Scientific challenge team
+- Critic
+- Sceptic / Red-Team Researcher
+- Falsification Agent
+- Replication Agent
+- Uncertainty Analyst
+- Evidence Auditor
+- Methodology Reviewer
+
+### Synthesis and discovery
+- Research Synthesizer
+- Scientific Writer
+- Discovery Assessor
+
+Existing advocate, critic, judge, deep-research and thought-tree components are being hardened into this research workflow rather than duplicated.
+
+---
+
+## 🕸️ Evidence Graph
+
+Climate Crew is moving from answer-centric research toward an explicit evidence graph.
+
+Canonical research concepts include:
+
+```text
+ResearchProject
+ResearchQuestion
+Hypothesis
+Claim
+Evidence
+Source
+Dataset
+Observation
+Method
+Experiment
+Model
+Assumption
+Contradiction
+Replication
+Uncertainty
+Finding
+DiscoveryCandidate
+```
+
+Example relationships:
+
+```text
+Evidence ──SUPPORTS──────▶ Claim
+Evidence ──CONTRADICTS───▶ Claim
+Claim ─────DERIVED_FROM──▶ Dataset
+Claim ─────DEPENDS_ON────▶ Assumption
+Claim ─────TESTED_BY─────▶ Experiment
+Claim ─────CHALLENGED_BY─▶ Critique
+Claim ─────REPLICATED_BY─▶ Replication
+```
+
+Evidence provenance should distinguish observations from derived, modelled, simulated, estimated and synthetic information so fallback or demonstration data cannot silently become scientific evidence.
+
+---
+
+## 🤖 Existing research engine
+
+Climate Crew already contains a substantial multi-agent foundation, including:
+
+```text
+src/agents/deep_research/
+├── orchestrator.py
+├── strategic_planner.py
+├── query_enricher.py
+├── search_agent.py
+├── synthesizer.py
+├── thought_tree.py
+├── router.py
+└── debate/
+    ├── advocate_agent.py
+    ├── critic_agent.py
+    └── judge_agent.py
+```
+
+The upgrade strategy is **convergence, not replacement**: existing implementations remain canonical where they already provide the required capability. New code should fill genuine scientific-method gaps rather than create parallel agent frameworks.
+
+---
+
+## 🌐 Climate and observational data
+
+The current platform includes integrations or tooling for sources such as:
+
+- NASA FIRMS
+- Copernicus climate services
+- NOAA weather and ocean data
+- OpenAQ
+- Climate TRACE
+- GBIF biodiversity data
+- Global Forest Watch
+- USGS earthquake data
+- disaster alerts
+- satellite imagery
+- market and climate-finance information
+- news and web research
+
+Climate Crew combines these observational sources with literature, documents, datasets, modelling and agent reasoning. Availability depends on configured credentials and individual upstream services.
+
+---
+
+## 🧩 Existing platform capabilities retained
+
+The transformation deliberately preserves and hardens useful infrastructure already present in the repository:
+
+- specialised multi-agent architecture
+- Deep Research orchestration
+- advocate / critic / judge debate
+- Thought Tree exploration
+- agent-to-agent message bus
+- negotiation protocols
+- working, episodic and semantic memory
+- shared memory and consolidation
+- RAG and Qdrant retrieval
+- dynamic routing and tool loading
+- climate and geospatial integrations
+- simulation infrastructure
+- evaluation and ablation tooling
+- execution tracing
+- FastAPI APIs
+- React + TypeScript research interface
+
+---
+
+## 🧪 Evaluation
+
+Climate Crew aims to test whether research architecture actually improves outcomes rather than assuming that more agents are automatically better.
+
+The repository already contains evaluation infrastructure for areas including retrieval, synthesis, debate, memory, coordination, efficiency, thought-tree behaviour and calibrated judging. As the upgrade progresses, these evaluations will be wired directly into research execution.
+
+Important questions include:
+
+- Does independent investigation improve claim quality?
+- Does debate reduce unsupported conclusions?
+- Does replication catch reasoning or data errors?
+- Does source-independence analysis prevent false consensus?
+- Does uncertainty analysis improve calibration?
+- When does adding agents increase redundancy rather than knowledge?
+
+---
+
+## 🔎 Discovery lifecycle
+
+Climate Crew distinguishes research progress from validated discovery:
+
+```text
+Observation
+   ↓
+Finding
+   ↓
+Candidate Finding
+   ↓
+Replicated Finding
+   ↓
+Novel Finding
+   ↓
+Discovery Candidate
+   ↓
+Externally Validated Discovery
+```
+
+A **Discovery Candidate** is not automatically a scientific discovery. External validation may require expert review, laboratory or field work, independent datasets, peer review or other domain-appropriate verification.
+
+---
+
+## 🌎 Distributed Climate Discovery
+
+The longer-term architecture allows bounded research work to be distributed across many participating machines and agents.
+
+Rather than asking thousands of systems to independently produce complete answers, Climate Crew can distribute specific research units such as:
+
+- search for evidence contradicting hypothesis X
+- reproduce calculation Y
+- test parameter region Z
+- analyse a specified dataset
+- run a sensitivity analysis
+- compare competing models
+- search literature or prior art
+
+Returned results feed the same provenance-aware evidence system and remain subject to validation gates.
+
+This creates a path from **Climate Crew as the research brain** to a larger distributed climate-discovery network.
+
+---
+
+## 🏗️ Technology stack
+
+| Layer | Current foundation |
+|---|---|
+| Backend | Python, FastAPI, Pydantic |
+| Agent orchestration | LangChain / LangGraph and project-native orchestration |
+| Retrieval | Qdrant-based RAG |
+| Frontend | React, TypeScript, Vite |
+| Geospatial | Mapbox, Leaflet, satellite/geospatial integrations |
+| Research data | Climate, Earth-observation, biodiversity, emissions, disaster and web sources |
+| Evaluation | Project-native evaluation, tracing, judges and ablation tooling |
+
+Model providers and individual data integrations are configurable and should not be treated as permanent architectural dependencies.
+
+---
+
+## ⚡ Development setup
+
+### Clone
+
 ```bash
-# 1. Setup Environment
+git clone https://github.com/Masterleeaus/Climate-crew.git
+cd Climate-crew
+```
+
+### Backend
+
+```bash
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# 2. Install Requirements
 pip install -r requirements.txt
-
-# 3. Launch Nerve Center
 uvicorn main:app --reload
-# API validates at http://localhost:8000/docs
 ```
 
-### Frontend (Dashboard)
+FastAPI development documentation is normally available at `http://localhost:8000/docs`.
+
+### Frontend
+
 ```bash
 cd frontend
-
-# 1. Install Dependencies
 npm install
-
-# 2. Launch Interface
 npm run dev
-# Access Mission Control at http://localhost:5173
 ```
 
----
+The Vite development interface is normally available at `http://localhost:5173`.
 
-## 🛠️ Technology Stack
-
-| Layer | Technologies |
-|-------|--------------|
-| **LLM Orchestration** | LangChain, LangGraph |
-| **Models** | Gemini 2.0 Flash, Gemini 2.5 Flash |
-| **RAG Infrastructure** | Qdrant Vector DB, 5-stage pipeline |
-| **Frontend** | React, Vite, Framer Motion, TailwindCSS, Recharts |
-| **Backend** | FastAPI, Pydantic |
-| **Geospatial** | Mapbox, Leaflet, NASA GIBS |
-| **Data Sources** | NASA FIRMS, ESA Copernicus, NOAA, Climate TRACE, GDACS |
+Configuration and credentials required by external models/data providers should be supplied through the project's environment configuration rather than committed to source control.
 
 ---
 
-## 🔬 Data Sources Integration
+## 🚧 Current status
 
-- **NASA FIRMS** - Active fire detection
-- **ESA Copernicus** - Climate data services
-- **NOAA** - Weather and ocean monitoring
-- **Climate TRACE** - Emissions tracking
-- **GDACS** - Global disaster alerts
-- **OpenAQ** - Air quality monitoring
-- **Yahoo Finance** - Market data feeds
-- **USGS** - Earthquake detection
+Climate Crew is undergoing an architectural migration from the original ClimateX / Convolve climate-intelligence platform into an evidence-driven climate research system.
 
----
+**Already present:** multi-agent orchestration, specialised climate agents, Deep Research, debate, RAG, memory, climate-data integrations, simulations, evaluation tooling, FastAPI and the React/TypeScript application.
 
-## 📝 Conclusion
+**Being added/hardened:** durable Research Projects, canonical research objects, evidence provenance, evidence independence, contradictions, falsification, replication, uncertainty, discovery gates and research-first user experiences.
 
-Climate change is no longer a distant threat—it is a present-day operational risk affecting supply chains, portfolios, and communities. ClimateX.ai was built to meet this moment. By deploying autonomous agents that never sleep, RAG pipelines that cite every source, and a Climate Time Machine that simulates futures, the platform empowers researchers, investors, and crisis responders to act with confidence.
-
-As mandatory climate disclosures reshape corporate accountability and 83% of institutional investors demand better risk data, the need for intelligent, explainable climate infrastructure has never been greater. ClimateX.ai operationalizes what others only visualize—turning the less than 1% of satellite data that reaches decision-makers into actionable intelligence.
-
-The question is no longer whether AI can help solve climate challenges—it's how fast we can deploy it.
-
-**ClimateX.ai: Planetary Intelligence, Real-Time.**
+The repository may therefore still contain legacy ClimateX, PRAKRITI and Convolve terminology while migration work is underway. Those names describe historical implementation layers, not the target product identity.
 
 ---
 
-<p align="center">
-  <strong>Convolve Hackathon 2026 • Making the invisible visible.</strong>
-</p>
+## 📐 Canonical architecture
+
+The approved architecture specification lives at:
+
+`docs/superpowers/specs/2026-09-27-climate-crew-research-architecture-design.md`
+
+New architectural work should converge on that specification and reuse existing implementations wherever practical.
+
+---
+
+## Climate Crew
+
+**Investigate independently. Challenge aggressively. Preserve the evidence. Discover carefully.**
