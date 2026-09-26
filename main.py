@@ -22,8 +22,8 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 app = FastAPI(
-    title="Convolve MAS API",
-    description="Multi-Agent System for Climate Intelligence & Deep Research",
+    title="Climate Crew API",
+    description="Evidence-driven multi-agent climate research and discovery system",
     version="1.0.0"
 )
 
@@ -51,11 +51,16 @@ app.include_router(disaster_router)
 
 @app.get("/")
 async def root():
-    return {"message": "Convolve MAS API is running", "docs": "/docs"}
+    return {
+        "name": "Climate Crew",
+        "message": "Climate Crew research API is running",
+        "mission": "Evidence-driven multi-agent climate research and discovery",
+        "docs": "/docs",
+    }
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy"}
+    return {"status": "healthy", "system": "Climate Crew"}
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
