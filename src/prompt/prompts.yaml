@@ -1,0 +1,51 @@
+multihop:
+  extract_entities_and_facts:
+    template: |
+      Extract key entities, facts, and information from the following retrieved documents that are relevant to answering the query.
+
+      Original Query: {original_query}
+
+      Retrieved Documents:
+      {combined_text}
+
+      Extract and list:
+      1. Key entities (people, places, organizations, concepts)
+      2. Important facts and relationships
+      3. Relevant details that could help answer the query
+
+      Format as a concise summary of extracted information:
+    temperature: 0.2
+    model: "gemini-2.0-flash-001"
+
+  rewrite_query_with_evidence:
+    template: |
+      Given the original query and evidence from previous retrieval, rewrite the query to focus on finding more specific information.
+
+      Original Query: {original_query}
+
+      Evidence from Hop {hop_number}:
+      {evidence}
+
+      Rewrite the query to:
+      1. Incorporate relevant entities and facts from the evidence
+      2. Focus on finding more specific or related information
+      3. Maintain the original intent while being more targeted
+
+      Rewritten query:
+    temperature: 0.3
+    model: "gemini-2.0-flash-001"
+
+  should_continue_hopping:
+    template: |
+      Given the original query and retrieved information, determine if we need to search for more information.
+
+      Original Query: {original_query}
+
+      Retrieved Information:
+      {sample_texts}
+
+      Do we have sufficient information to answer the query, or should we search for more specific information?
+
+      Respond with only "YES" if we have enough information, or "NO" if we need to search more:
+    temperature: 0.1
+    model: "gemini-2.0-flash-001"

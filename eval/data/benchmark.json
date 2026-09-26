@@ -1,0 +1,41 @@
+[
+  {
+    "query": "What are the main causes of climate change?",
+    "expected_topics": ["greenhouse gases", "carbon dioxide", "fossil fuels", "global warming"],
+    "ground_truth_answer": "The main causes of climate change include increased greenhouse gas emissions from burning fossil fuels, deforestation, industrial processes, and agricultural activities. Carbon dioxide from burning coal, oil, and gas is the primary contributor, along with methane from agriculture and nitrous oxide from industrial processes.",
+    "difficulty": "simple",
+    "requires_multihop": false,
+    "requires_debate": false,
+    "requires_memory": false,
+    "metadata": {
+      "category": "climate",
+      "domain": "environmental_science"
+    }
+  },
+  {
+    "query": "How do renewable energy sources compare to fossil fuels in terms of cost and environmental impact?",
+    "expected_topics": ["renewable energy", "solar power", "wind energy", "cost comparison", "environmental impact"],
+    "ground_truth_answer": "Renewable energy sources like solar and wind have become increasingly cost-competitive with fossil fuels, with solar and wind now often cheaper than coal and gas in many regions. Environmentally, renewables produce minimal to zero greenhouse gas emissions during operation, unlike fossil fuels which are major contributors to climate change. However, renewables require initial infrastructure investment and have intermittency challenges that fossil fuels do not.",
+    "difficulty": "moderate",
+    "requires_multihop": true,
+    "requires_debate": true,
+    "requires_memory": false,
+    "metadata": {
+      "category": "energy",
+      "domain": "economics"
+    }
+  },
+  {
+    "query": "What are the long-term effects of deforestation on biodiversity and climate?",
+    "expected_topics": ["deforestation", "biodiversity loss", "carbon sequestration", "ecosystem services", "species extinction"],
+    "ground_truth_answer": "Deforestation has severe long-term effects on both biodiversity and climate. It leads to habitat loss and fragmentation, causing species extinction and reducing genetic diversity. From a climate perspective, forests act as carbon sinks, so deforestation releases stored carbon and reduces the planet's capacity to absorb CO2. This creates a feedback loop where climate change further threatens forest ecosystems, leading to additional biodiversity loss.",
+    "difficulty": "complex",
+    "requires_multihop": true,
+    "requires_debate": true,
+    "requires_memory": true,
+    "metadata": {
+      "category": "ecology",
+      "domain": "environmental_science"
+    }
+  }
+]
