@@ -2,11 +2,11 @@
 
 ## Evidence-driven multi-agent climate research and discovery
 
-Climate Crew is an open climate-research system built around teams of specialised AI agents that investigate questions, gather observational and published evidence, challenge competing explanations, reproduce results, quantify uncertainty, and advance only well-supported findings toward human validation.
+Climate Crew is a multi-agent scientific research platform for investigating climate, environmental and Earth-system problems. It coordinates specialised research agents, observational data, scientific literature, datasets, models, simulations and human expertise through a provenance-aware research process designed to produce findings that can be challenged, reproduced and validated.
 
-> **Mission:** build an auditable research engine that helps people investigate climate problems faster without confusing model agreement with scientific evidence.
+> **Mission:** accelerate climate and environmental discovery without lowering the standard of evidence required to trust the result.
 
-Climate Crew evolves the existing ClimateX/Convolve multi-agent platform rather than replacing it. The project retains its deep-research engine, domain agents, RAG, memory, message bus, debate, simulations, evaluation framework, climate-data integrations, FastAPI backend and React/TypeScript interface, while reorganising them around rigorous scientific research.
+Climate Crew is designed around a simple principle: **agreement is not evidence**. Agents may reason, debate and collaborate, but scientific claims advance because the supporting evidence survives scrutiny.
 
 ---
 
@@ -44,55 +44,64 @@ Discovery Candidate
 Human / Expert Validation
 ```
 
-The durable unit of work is a **Research Project**, not a chat answer. Projects preserve hypotheses, evidence, methods, datasets, assumptions, contradictions, replications, uncertainty and research history.
+The durable unit of work is a **Research Project**, not a chat answer. A project preserves its questions, hypotheses, claims, evidence, sources, datasets, observations, methods, models, assumptions, contradictions, replications, uncertainty and research history.
 
 ---
 
-## 🧠 Core principles
+## 🧠 Scientific principles
 
 ### Evidence before consensus
-Multiple agents agreeing does not make a claim true. Climate Crew tracks the evidence supporting a claim and the independence of that evidence.
+Multiple agents reaching the same conclusion does not make that conclusion true. Climate Crew evaluates the evidence behind a claim and the independence of the evidence supporting it.
+
+### Independent investigation
+Important questions can be investigated by separate agents, methods and data sources before results are combined. This helps reduce correlated reasoning errors and false consensus.
 
 ### Memory is not evidence
-Agent memory helps researchers work efficiently. Scientific claims require attributable evidence, observations, datasets, methods or reproducible calculations.
+Agent memory supports continuity and research efficiency. Scientific claims require attributable observations, datasets, literature, methods, calculations or other inspectable evidence.
 
 ### Contradictions are first-class research objects
-Conflicting evidence is preserved and investigated rather than silently averaged away during synthesis.
+Conflicting evidence is preserved, represented explicitly and investigated rather than silently averaged away during synthesis.
 
 ### Findings must survive challenge
-Important findings should face criticism, attempted falsification, replication and uncertainty analysis before becoming discovery candidates.
+Important findings can be subjected to criticism, red-team analysis, attempted falsification, replication and uncertainty analysis before advancing.
 
-### Provenance must survive the pipeline
-Research outputs should remain traceable to their sources, transformations, models and methods.
+### Provenance survives the pipeline
+Research outputs remain traceable to their sources, transformations, datasets, models, methods and assumptions.
+
+### Uncertainty stays visible
+The platform distinguishes what is observed, inferred, modelled, simulated, estimated, disputed and unknown rather than collapsing everything into a single confidence score.
 
 ### Humans remain part of validation
-Climate Crew can generate and assess discovery candidates. It does not declare scientific truth merely because an agent or model says so.
+Climate Crew can generate and assess discovery candidates. Scientific truth is not declared merely because an agent, model or agent majority supports a claim.
 
 ---
 
 ## 👥 The Crew
 
-Climate Crew organises existing and future agents into scientific roles.
+Climate Crew organises specialised intelligence into complementary scientific roles.
 
 ### Research leadership
 - **Research Director** — owns the research mission and decomposition.
-- **Strategic Planner** — turns questions into investigation plans.
-- **Research Coordinator** — routes work and manages dependencies.
+- **Strategic Planner** — converts questions into investigation plans.
+- **Research Coordinator** — routes work, manages dependencies and coordinates specialist teams.
 
 ### Climate and Earth-system specialists
-Existing Climate Crew capabilities provide foundations for specialists covering:
-- climate anomalies
-- atmospheric and air-quality systems
-- carbon emissions
-- oceans
+Specialist agents can investigate areas including:
+- climate anomalies and attribution
+- atmospheric systems and air quality
+- greenhouse gases and carbon emissions
+- oceans and marine systems
 - biodiversity and ecology
-- deforestation
+- forests and land-use change
 - wildfire
-- flood and disaster systems
+- floods and natural hazards
 - geospatial and satellite intelligence
+- water and soil systems
+- environmental chemistry
+- cryosphere science
+- energy systems
 - climate finance, ESG and regulatory risk
-
-The architecture is designed to expand into environmental chemistry, cryosphere science, energy systems, materials research and other climate-relevant disciplines.
+- climate-relevant materials and technologies
 
 ### Research specialists
 - Literature Researcher
@@ -101,6 +110,7 @@ The architecture is designed to expand into environmental chemistry, cryosphere 
 - Modelling Agent
 - Statistical Analyst
 - Experimental Designer
+- Geospatial Researcher
 - Novelty / Prior-Art Researcher
 
 ### Scientific challenge team
@@ -117,13 +127,13 @@ The architecture is designed to expand into environmental chemistry, cryosphere 
 - Scientific Writer
 - Discovery Assessor
 
-Existing advocate, critic, judge, deep-research and thought-tree components are being hardened into this research workflow rather than duplicated.
+Agents can form temporary research teams around a problem rather than relying on a single fixed workflow for every investigation.
 
 ---
 
 ## 🕸️ Evidence Graph
 
-Climate Crew is moving from answer-centric research toward an explicit evidence graph.
+Climate Crew represents research as an interconnected evidence system rather than a collection of generated answers.
 
 Canonical research concepts include:
 
@@ -141,13 +151,14 @@ Experiment
 Model
 Assumption
 Contradiction
+Critique
 Replication
 Uncertainty
 Finding
 DiscoveryCandidate
 ```
 
-Example relationships:
+Relationships can include:
 
 ```text
 Evidence ──SUPPORTS──────▶ Claim
@@ -157,99 +168,162 @@ Claim ─────DEPENDS_ON────▶ Assumption
 Claim ─────TESTED_BY─────▶ Experiment
 Claim ─────CHALLENGED_BY─▶ Critique
 Claim ─────REPLICATED_BY─▶ Replication
+Finding ───SUPPORTED_BY──▶ Evidence
 ```
 
-Evidence provenance should distinguish observations from derived, modelled, simulated, estimated and synthetic information so fallback or demonstration data cannot silently become scientific evidence.
+Evidence records distinguish observational, experimental, published, derived, modelled, simulated, estimated and synthetic information. Provenance follows evidence through transformations so downstream findings can be traced back to their origin.
 
 ---
 
-## 🤖 Existing research engine
+## 🌐 Earth Observatory
 
-Climate Crew already contains a substantial multi-agent foundation, including:
+Climate Crew can combine research reasoning with live and historical Earth-observation information.
+
+The Earth Observatory is designed to work across data such as:
+
+- satellite imagery
+- atmospheric observations
+- weather and climate records
+- ocean observations
+- emissions inventories
+- air-quality measurements
+- biodiversity observations
+- forest and land-use monitoring
+- wildfire observations
+- hydrology and flood information
+- geological and hazard data
+- environmental monitoring datasets
+- regulatory and industrial environmental information
+
+Geospatial investigations can connect locations, observations, events, datasets, claims and research projects through the same evidence architecture.
+
+---
+
+## 🔭 Discovery Scouts
+
+Climate Crew is designed to investigate more than questions submitted manually.
+
+**Discovery Scouts** can search for emerging research opportunities by examining independent signals across environmental and scientific systems. These signals may include unusual observations, unexplained trends, emissions patterns, ecological changes, waste streams, industrial data, scientific literature, patents, regulatory information and discrepancies between models and observations.
+
+A scout can assemble a potential research problem together with the evidence that triggered it and send that candidate into the research lifecycle.
+
+This creates a second direction of discovery:
 
 ```text
-src/agents/deep_research/
-├── orchestrator.py
-├── strategic_planner.py
-├── query_enricher.py
-├── search_agent.py
-├── synthesizer.py
-├── thought_tree.py
-├── router.py
-└── debate/
-    ├── advocate_agent.py
-    ├── critic_agent.py
-    └── judge_agent.py
+Question → Investigation
 ```
 
-The upgrade strategy is **convergence, not replacement**: existing implementations remain canonical where they already provide the required capability. New code should fill genuine scientific-method gaps rather than create parallel agent frameworks.
+and
+
+```text
+Signals → Pattern → Candidate Problem → Investigation
+```
+
+The platform can therefore search for problems worth investigating, not only wait for people to define them.
 
 ---
 
-## 🌐 Climate and observational data
+## 🧪 Research engine
 
-The current platform includes integrations or tooling for sources such as:
+The research engine coordinates multi-step scientific investigation across specialised agents and tools.
 
-- NASA FIRMS
-- Copernicus climate services
-- NOAA weather and ocean data
-- OpenAQ
-- Climate TRACE
-- GBIF biodiversity data
-- Global Forest Watch
-- USGS earthquake data
-- disaster alerts
-- satellite imagery
-- market and climate-finance information
-- news and web research
+Capabilities include:
 
-Climate Crew combines these observational sources with literature, documents, datasets, modelling and agent reasoning. Availability depends on configured credentials and individual upstream services.
-
----
-
-## 🧩 Existing platform capabilities retained
-
-The transformation deliberately preserves and hardens useful infrastructure already present in the repository:
-
-- specialised multi-agent architecture
-- Deep Research orchestration
-- advocate / critic / judge debate
+- research-question decomposition
+- parallel investigation
+- literature and web research
+- dataset discovery and analysis
+- retrieval-augmented research
+- geospatial investigation
+- hypothesis generation
+- competing-hypothesis analysis
+- structured scientific debate
 - Thought Tree exploration
-- agent-to-agent message bus
-- negotiation protocols
-- working, episodic and semantic memory
-- shared memory and consolidation
-- RAG and Qdrant retrieval
-- dynamic routing and tool loading
-- climate and geospatial integrations
-- simulation infrastructure
-- evaluation and ablation tooling
-- execution tracing
-- FastAPI APIs
-- React + TypeScript research interface
+- modelling and simulation
+- statistical analysis
+- source and evidence comparison
+- contradiction detection
+- falsification attempts
+- replication workflows
+- uncertainty analysis
+- scientific synthesis
+- novelty and prior-art investigation
+- research tracing and auditability
+
+The objective is not to maximize the number of agents involved. The system should select the smallest useful combination of independent capabilities for the research problem.
 
 ---
 
-## 🧪 Evaluation
+## ⚖️ Adversarial truth-seeking
 
-Climate Crew aims to test whether research architecture actually improves outcomes rather than assuming that more agents are automatically better.
+Climate Crew treats disagreement as useful information.
 
-The repository already contains evaluation infrastructure for areas including retrieval, synthesis, debate, memory, coordination, efficiency, thought-tree behaviour and calibrated judging. As the upgrade progresses, these evaluations will be wired directly into research execution.
+Claims and discovery candidates can be exposed to adversarial evaluation in which researchers, agents and analytical systems attempt to identify:
 
-Important questions include:
+- contradictory observations
+- methodological weaknesses
+- unsupported assumptions
+- alternative explanations
+- statistical errors
+- data leakage
+- correlated sources
+- model dependence
+- irreproducible calculations
+- prior research that invalidates novelty
 
-- Does independent investigation improve claim quality?
-- Does debate reduce unsupported conclusions?
-- Does replication catch reasoning or data errors?
-- Does source-independence analysis prevent false consensus?
-- Does uncertainty analysis improve calibration?
-- When does adding agents increase redundancy rather than knowledge?
+Where appropriate, prediction or forecasting mechanisms can also be used to record explicit expectations about future measurable outcomes. Correctly resolved predictions become evidence about the reliability of methods and participants; they do not substitute for scientific evidence about the underlying claim.
+
+---
+
+## 🔁 Replication and falsification
+
+Climate Crew separates **producing a result** from **trusting a result**.
+
+A significant claim may be independently reconstructed using:
+
+- different agents
+- different models
+- different datasets
+- alternative statistical methods
+- alternative assumptions
+- independent literature searches
+- independent calculations
+- simulation or sensitivity analysis
+
+Replication failures remain attached to the claim and become part of its evidence history.
+
+Falsification agents deliberately search for conditions under which a hypothesis fails rather than simply gathering additional supporting material.
+
+---
+
+## 📊 Uncertainty and evidence independence
+
+Climate Crew can track uncertainty at the level of evidence, claims and findings.
+
+The system considers not only how much evidence exists, but whether apparently separate evidence is genuinely independent.
+
+For example, ten articles derived from the same underlying dataset should not automatically count as ten independent confirmations.
+
+Research assessment can consider:
+
+- source independence
+- dataset independence
+- methodological independence
+- model independence
+- measurement uncertainty
+- statistical uncertainty
+- assumption sensitivity
+- unresolved contradictions
+- replication history
+- missing evidence
+
+This helps prevent artificial confidence created by duplicated information or correlated agents.
 
 ---
 
 ## 🔎 Discovery lifecycle
 
-Climate Crew distinguishes research progress from validated discovery:
+Climate Crew distinguishes promising research from validated discovery.
 
 ```text
 Observation
@@ -267,43 +341,120 @@ Discovery Candidate
 Externally Validated Discovery
 ```
 
-A **Discovery Candidate** is not automatically a scientific discovery. External validation may require expert review, laboratory or field work, independent datasets, peer review or other domain-appropriate verification.
+A **Discovery Candidate** is a structured research object containing the supporting evidence, provenance, methods, contradictions, uncertainty, replication history and novelty assessment needed for external evaluation.
+
+External validation may require domain experts, independent datasets, field investigation, laboratory work, peer review or other domain-appropriate verification.
 
 ---
 
-## 🌎 Distributed Climate Discovery
+## 🌎 Distributed Climate Discovery Network
 
-The longer-term architecture allows bounded research work to be distributed across many participating machines and agents.
+Climate Crew is designed to scale research beyond a single machine or agent cluster.
 
-Rather than asking thousands of systems to independently produce complete answers, Climate Crew can distribute specific research units such as:
+Large investigations can be decomposed into bounded research tasks and distributed across participating agents, machines, institutions or community contributors.
+
+Examples include:
 
 - search for evidence contradicting hypothesis X
 - reproduce calculation Y
-- test parameter region Z
-- analyse a specified dataset
-- run a sensitivity analysis
+- analyse dataset Z
+- test a specified parameter region
+- perform sensitivity analysis
 - compare competing models
-- search literature or prior art
+- search literature for independent confirmation
+- investigate prior art
+- inspect a geographic anomaly
+- replicate a statistical result
 
-Returned results feed the same provenance-aware evidence system and remain subject to validation gates.
+Returned work enters the same evidence and provenance system and remains subject to validation gates.
 
-This creates a path from **Climate Crew as the research brain** to a larger distributed climate-discovery network.
+This creates a path toward a **global climate discovery network** in which distributed intelligence contributes verifiable pieces of larger scientific investigations.
 
 ---
 
-## 🏗️ Technology stack
+## 🧬 Research memory
 
-| Layer | Current foundation |
+Climate Crew maintains durable scientific context across long-running investigations.
+
+Research memory can preserve:
+
+- previous questions
+- hypotheses considered
+- rejected explanations
+- evidence collected
+- unresolved contradictions
+- datasets examined
+- methods attempted
+- model outputs
+- replication attempts
+- uncertainty assessments
+- findings and discovery candidates
+
+Memory helps future investigations avoid repeating work while maintaining the distinction between remembered information and verified evidence.
+
+---
+
+## 📐 Evaluation
+
+Climate Crew evaluates the research process itself.
+
+Important questions include:
+
+- Does independent investigation improve claim quality?
+- Does debate expose unsupported conclusions?
+- Does falsification reduce false positives?
+- Does replication catch reasoning or data errors?
+- Does source-independence analysis prevent false consensus?
+- Does uncertainty analysis improve calibration?
+- Which combinations of agents produce genuinely complementary information?
+- When does adding agents create redundancy instead of knowledge?
+- Which research methods consistently survive external validation?
+
+Evaluation, tracing and ablation testing allow research architectures to be compared rather than assumed effective.
+
+---
+
+## 🛡️ Research integrity
+
+Climate Crew is designed so that scientific auditability is part of the architecture rather than an optional reporting layer.
+
+Research records can preserve:
+
+- source attribution
+- evidence provenance
+- timestamps
+- dataset identity
+- transformations
+- model and tool involvement
+- methods
+- assumptions
+- agent contributions
+- critiques
+- contradictions
+- replication results
+- uncertainty
+- human validation decisions
+
+Synthetic, fallback, demonstration or simulated information must remain distinguishable from observational evidence throughout the research pipeline.
+
+---
+
+## 🏗️ Technology
+
+Climate Crew uses a modular architecture suitable for scientific agents, APIs, research data and interactive investigation.
+
+| Layer | Technology direction |
 |---|---|
 | Backend | Python, FastAPI, Pydantic |
-| Agent orchestration | LangChain / LangGraph and project-native orchestration |
-| Retrieval | Qdrant-based RAG |
+| Agent orchestration | Graph and project-native multi-agent orchestration |
+| Retrieval | Vector and provenance-aware research retrieval |
 | Frontend | React, TypeScript, Vite |
-| Geospatial | Mapbox, Leaflet, satellite/geospatial integrations |
-| Research data | Climate, Earth-observation, biodiversity, emissions, disaster and web sources |
-| Evaluation | Project-native evaluation, tracing, judges and ablation tooling |
+| Geospatial | Interactive Earth observation and mapping |
+| Research data | Climate, environmental, scientific and Earth-observation sources |
+| Models | Configurable cloud and local model providers |
+| Evaluation | Research tracing, judging, replication and ablation |
 
-Model providers and individual data integrations are configurable and should not be treated as permanent architectural dependencies.
+Individual model providers and data services are integrations rather than permanent architectural dependencies.
 
 ---
 
@@ -337,32 +488,10 @@ npm run dev
 
 The Vite development interface is normally available at `http://localhost:5173`.
 
-Configuration and credentials required by external models/data providers should be supplied through the project's environment configuration rather than committed to source control.
+Credentials required by external models or data providers should be supplied through environment configuration rather than committed to source control.
 
 ---
 
-## 🚧 Current status
-
-Climate Crew is undergoing an architectural migration from the original ClimateX / Convolve climate-intelligence platform into an evidence-driven climate research system.
-
-**Already present:** multi-agent orchestration, specialised climate agents, Deep Research, debate, RAG, memory, climate-data integrations, simulations, evaluation tooling, FastAPI and the React/TypeScript application.
-
-**Being added/hardened:** durable Research Projects, canonical research objects, evidence provenance, evidence independence, contradictions, falsification, replication, uncertainty, discovery gates and research-first user experiences.
-
-The repository may therefore still contain legacy ClimateX, PRAKRITI and Convolve terminology while migration work is underway. Those names describe historical implementation layers, not the target product identity.
-
----
-
-## 📐 Canonical architecture
-
-The approved architecture specification lives at:
-
-`docs/superpowers/specs/2026-09-27-climate-crew-research-architecture-design.md`
-
-New architectural work should converge on that specification and reuse existing implementations wherever practical.
-
----
-
-## Climate Crew
+## 🌍 Climate Crew
 
 **Investigate independently. Challenge aggressively. Preserve the evidence. Discover carefully.**
