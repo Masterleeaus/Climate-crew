@@ -2,13 +2,19 @@
 
 ## Evidence-driven multi-agent climate research and discovery
 
+<p align="center">
+  <img src="docs/images/B97B6D0D-BF7B-4C95-B84A-B75670FB988E.png" alt="Climate Crew — evidence-driven multi-agent climate research and discovery" width="100%" />
+</p>
+
 Climate Crew is a multi-agent scientific research platform for investigating climate, environmental and Earth-system problems. It coordinates specialised research agents, observational data, scientific literature, datasets, models, simulations and human expertise through a provenance-aware process designed to produce findings that can be challenged, reproduced and validated.
 
 > **Mission:** accelerate climate and environmental discovery without lowering the standard of evidence required to trust the result.
 
 **Agreement is not evidence.** Agents may reason, debate and collaborate, but scientific claims advance because their supporting evidence survives scrutiny.
 
-![Climate Crew architecture](docs/images/climate-crew-architecture-light.jpg)
+<p align="center">
+  <img src="docs/images/1C6C37B3-7DA3-4F08-820E-3341C0CA952F.png" alt="Climate Crew platform architecture" width="100%" />
+</p>
 
 ---
 
@@ -141,7 +147,9 @@ Capabilities include research-question decomposition, parallel investigation, li
 
 The goal is not to maximise agent count. Climate Crew should select the smallest useful combination of genuinely complementary and independent capabilities for each problem.
 
-![Climate Crew research system](docs/images/climate-crew-architecture-dark.jpg)
+<p align="center">
+  <img src="docs/images/0ED9B80C-22EA-4698-BC40-08B375937F04.png" alt="Climate Crew research engine, agent team, Earth Observatory and validation architecture" width="100%" />
+</p>
 
 ---
 
