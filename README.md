@@ -8,6 +8,8 @@
 
 Climate Crew is a multi-agent scientific research platform for investigating climate, environmental and Earth-system problems. It coordinates specialised research agents, observational data, scientific literature, datasets, models, simulations and human expertise through a provenance-aware process designed to produce findings that can be challenged, reproduced and validated.
 
+> **Project status:** This repository is an active research platform and prototype. The architecture and capability descriptions below express intended system scope; validate each integration and scientific workflow against its implementation and tests before relying on outputs.
+
 > **Mission:** accelerate climate and environmental discovery without lowering the standard of evidence required to trust the result.
 
 **Agreement is not evidence.** Agents may reason, debate and collaborate, but scientific claims advance because their supporting evidence survives scrutiny.
@@ -248,6 +250,16 @@ npm run dev
 ```
 
 FastAPI development docs are normally available at `http://localhost:8000/docs`; Vite normally runs at `http://localhost:5173`.
+
+## 🧪 Tests
+
+The repository includes Python test and demo scripts under `test/`. After installing the pinned dependencies, run an appropriate targeted test, for example:
+
+```bash
+pytest test/test_agents.py
+```
+
+Review each test's external-service requirements first; provider and data-source tests may need credentials or network access. A successful test run does not by itself validate scientific claims or external datasets.
 
 Credentials required by external models or data providers should be supplied through environment configuration rather than committed to source control.
 
