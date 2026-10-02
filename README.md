@@ -1,5 +1,12 @@
 # Climate Crew Research Platform
 
+## Product architecture and engineering highlights
+
+A climate and environmental research platform built around independent investigation, attributable evidence, adversarial challenge, and reproducible scientific work.
+
+- **Architecture:** Specialist research agents connect to literature, datasets, geospatial and environmental sources through an evidence graph that preserves claims, sources, methods, assumptions, contradictions, and uncertainty.
+- **Distinctive engineering:** Its research workflow includes competing hypotheses, falsification, replication, uncertainty analysis, and human validation; agent consensus is deliberately not treated as evidence.
+
 ## Evidence-driven multi-agent climate research and discovery
 
 <p align="center">
