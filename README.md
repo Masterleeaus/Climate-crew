@@ -1,4 +1,4 @@
-# 🌍 Climate Crew
+# Climate Crew Research Platform
 
 ## Evidence-driven multi-agent climate research and discovery
 
