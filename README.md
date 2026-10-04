@@ -63,6 +63,21 @@ Human / Expert Validation
 
 The durable unit of work is a **Research Project**, not a chat answer. Projects preserve questions, hypotheses, claims, evidence, sources, datasets, observations, methods, models, assumptions, contradictions, replications, uncertainty and research history.
 
+## Autonomous Lifecycle Example
+
+### From environmental signal to a reviewable discovery candidate
+
+A representative Climate Crew investigation follows the research lifecycle described by this repository:
+
+1. **Frame the question.** A researcher or discovery signal becomes a durable Research Project with scope, objectives, assumptions, and measurable questions.
+2. **Decompose and investigate independently.** Specialist roles examine literature, datasets, observations, models, and geospatial context through separate methods and sources.
+3. **Preserve the evidence trail.** Claims link to their sources, datasets, transformations, methods, assumptions, uncertainty, and contradictions in the evidence graph.
+4. **Try to break the explanation.** Critics and falsification work search for counter-evidence and alternative explanations; replication attempts use meaningfully independent inputs or methods.
+5. **Synthesize without hiding uncertainty.** The project records what is observed, inferred, modelled, disputed, or unknown and assembles a finding for human or expert validation.
+6. **Promote cautiously.** A discovery candidate carries its evidence, methods, contradiction history, uncertainty, replication, and novelty assessment for external evaluation.
+
+**Evidence boundary:** this is the research workflow the project describes, not a claim that every provider integration or scientific stage has been production-validated. Climate Crew’s strongest evidence is its research architecture and its explicit validation boundaries; the repository history did not provide a merged PR example of the software-delivery agent workflow during this profile update.
+
 ---
 
 ## 🧠 Scientific principles
