@@ -271,6 +271,16 @@ The API exposes `/health` and `/docs` locally. The repository contains a broad m
 
 The repository demonstrates real orchestration, routing, retrieval, memory, simulation and evaluation code. It does not provide a single reproducible benchmark proving that the complete multi-agent workflow is production-ready, scientifically valid, or reliable across all providers. Run the narrowest relevant test and review its credentials/network requirements before interpreting a result.
 
+### Reproducible offline baseline path
+
+The committed `eval/data/benchmark.json` contains three labelled climate queries. The offline baseline uses `EvaluationConfig.from_preset("baseline")`, disables the LLM judge, and runs through `test/test_eval.py` without provider credentials or network access:
+
+```bash
+pytest test/test_eval.py -k offline_baseline
+```
+
+This verifies dataset loading, baseline configuration, mock-runner execution and report plumbing. `eval/runner.py` currently marks `_run_system` as a mock integration, so this path is harness evidence—not a model benchmark, scientific result, or claim about external-provider quality.
+
 ---
 
 ## ⚡ Development setup
