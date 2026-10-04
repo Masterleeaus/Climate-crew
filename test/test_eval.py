@@ -10,6 +10,23 @@ from eval import run_evaluation
 from eval.config import EvaluationConfig
 
 
+def test_offline_baseline_evaluation(tmp_path):
+    """Exercise the committed benchmark through the no-provider baseline path."""
+    dataset_path = Path(__file__).resolve().parent.parent / "eval" / "data" / "benchmark.json"
+    output_dir = tmp_path / "offline-baseline"
+
+    report = run_evaluation(
+        config="baseline",
+        dataset=str(dataset_path),
+        output_dir=str(output_dir),
+        use_llm_judge=False,
+    )
+
+    assert report.total_queries == 3
+    assert report.successful_runs == 3
+    assert report.failed_runs == 0
+    assert report.aggregate_metrics
+
 def test_basic_evaluation():
     """Test basic evaluation with mock system."""
     print("=" * 80)
