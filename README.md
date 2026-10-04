@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/climate-crew-banner.svg" alt="Climate Crew research platform: specialist agents, data adapters, debate, and reviewable reports." width="100%" />
+</p>
+
 # Climate Crew
 
 > Climate Crew brings specialist environmental agents, data adapters, and multi-stage research into one exploration workspace.
@@ -9,6 +13,10 @@ Researchers can investigate a question, challenge candidate findings, and assemb
 </p>
 
 ## Why Climate Crew is distinctive
+
+<p align="center">
+  <img src="assets/climate-crew-architecture.svg" alt="Climate Crew prototype flow from question to specialist agents, data adapters, debate, and reviewable report." width="100%" />
+</p>
 
 The core research path is an explicit sequence: query enrichment, strategic planning, Monte Carlo tree search (MCTS) exploration, advocate/critic/judge debate, and synthesis. That separation makes it easier to inspect where a result came from, swap a specialist, and test a stage independently.
 
