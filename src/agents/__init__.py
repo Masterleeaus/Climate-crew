@@ -9,10 +9,7 @@ from .biodiversity_agent import BiodiversityAgent
 from .climate_anomaly_agent import ClimateAnomalyAgent
 from .carbon_emissions_agent import CarbonEmissionsAgent
 from .orchestrator import OrchestratorAgent
-from .market_impact_agent import MarketImpactAgent
 from .regulatory_risk_agent import RegulatoryRiskAgent
-from .esg_agent import ESGAgent
-from .climate_finance_orchestrator import ClimateFinanceOrchestrator
 from .disaster_management_agent import DisasterManagementAgent
 from .meta_learning import MetaLearner, RoutingSuggestion
 from .dynamic_router import DynamicRouter, QueryComplexity, RoutingDecision, AGENT_CAPABILITIES
@@ -30,10 +27,7 @@ __all__ = [
     "ClimateAnomalyAgent",
     "CarbonEmissionsAgent",
     "OrchestratorAgent",
-    "MarketImpactAgent",
     "RegulatoryRiskAgent",
-    "ESGAgent",
-    "ClimateFinanceOrchestrator",
     "DisasterManagementAgent",
     # Meta-learning & Dynamic Routing
     "MetaLearner",

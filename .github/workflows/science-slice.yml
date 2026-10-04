@@ -1,0 +1,33 @@
+name: Climate science slice
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-science:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install minimal offline-science dependencies
+        run: python -m pip install -r requirements-science.txt
+      - name: Check generated benchmark dataset
+        run: |
+          python eval/science_quality/build_dataset.py
+          git diff --exit-code -- eval/science_quality/data/climate_evidence_benchmark.json
+      - name: Run offline tests with network blocked
+        run: python -m pytest -q tests/science
+      - name: Reproduce pinned GISTEMP output
+        run: python analysis/reproduce_gistemp.py --check
+      - name: Compile the focused Python modules
+        run: python -m compileall -q analysis src/science eval/science_quality tests/science

@@ -1,0 +1,157 @@
+{
+  "baseline": "1951-1980",
+  "dataset": "NASA GISTEMP v4 global Land-Ocean Temperature Index",
+  "report": {
+    "conclusion": "The pinned global anomaly series shows a positive monotonic trend over the analysis period; the exploratory endpoint sensitivity check does not overturn that pattern. This is a descriptive time-series result, not a causal attribution analysis.",
+    "evidence": [
+      {
+        "derived_from": [],
+        "evidence_id": "E1",
+        "evidence_kind": "dataset",
+        "independence_group": "NASA-GISTEMP-v4",
+        "limitations": [
+          "A global aggregate does not represent local or regional trends.",
+          "An anomaly series alone does not identify causal attribution."
+        ],
+        "retrieved_at": "2026-10-04",
+        "source_title": "NASA GISS Surface Temperature Analysis v4 data downloads",
+        "source_url": "https://data.giss.nasa.gov/gistemp/data_v4.html",
+        "statement": "NASA GISTEMP v4 global land-ocean annual mean temperature anomalies (J-D column), relative to the 1951–1980 baseline."
+      },
+      {
+        "derived_from": [
+          "E1"
+        ],
+        "evidence_id": "E2",
+        "evidence_kind": "derived",
+        "independence_group": "NASA-GISTEMP-v4-derived",
+        "limitations": [
+          "A reproducibility snapshot can differ from later NASA revisions."
+        ],
+        "retrieved_at": "2026-10-04",
+        "source_title": "Pinned GISTEMP CSV snapshot and deterministic analysis",
+        "source_url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv",
+        "statement": "SHA-256 c9ce0750ca93a8241c42fe86cd5bf54d07b28b21ae650b0ae49a206907018cd9; 146 complete annual values were analysed for 1880–2025."
+      },
+      {
+        "derived_from": [
+          "E2"
+        ],
+        "evidence_id": "E3",
+        "evidence_kind": "derived",
+        "independence_group": "Climate-Crew-analysis-v1",
+        "limitations": [
+          "The bootstrap interval quantifies sampling sensitivity under the stated residual block scheme; it does not include all measurement or structural uncertainty."
+        ],
+        "retrieved_at": "2026-10-04",
+        "source_title": "Climate Crew reproducible calculation",
+        "source_url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv",
+        "statement": "Mann–Kendall tau-b=0.7347, p=3.44e-39; Sen slope=0.0812 °C/decade; the block-bootstrap OLS 95% interval is 0.0676 to 0.0980 °C/decade."
+      }
+    ],
+    "falsification_tests": [
+      {
+        "evidence_ids": [
+          "E2",
+          "E3"
+        ],
+        "hypothesis_id": "H1",
+        "method": "Exploratory endpoint sensitivity: re-run Mann–Kendall and Sen-slope estimates through the year before the final ten observations.",
+        "outcome": "not_falsified",
+        "predeclared": false,
+        "question": "Does the positive trend persist after excluding 2016-2025?",
+        "result_summary": "For 1880–2015, Sen slope=0.0711 °C/decade and Mann–Kendall p=4.37e-33.",
+        "test_id": "F1"
+      }
+    ],
+    "hypotheses": [
+      {
+        "hypothesis_id": "H1",
+        "statement": "The annual global land-ocean temperature anomaly series has a positive monotonic trend over the stated period.",
+        "status": "supported"
+      },
+      {
+        "hypothesis_id": "H2",
+        "statement": "The apparent full-period rise is solely a recent-endpoint effect and disappears when the final ten years are omitted.",
+        "status": "challenged"
+      }
+    ],
+    "limitations": [
+      "One global annual series is not an independent replication across datasets.",
+      "A monotonic trend test does not explain causes or predict local impacts.",
+      "The pinned snapshot and the analysis choices should be revisited when reproducing later NASA revisions."
+    ],
+    "question": "Did annual global GISTEMP land-ocean anomalies increase over 1880–2025?",
+    "uncertainty": {
+      "caveats": [
+        "This interval reflects the specified block-bootstrap procedure, not all sources of uncertainty.",
+        "The analysis is descriptive and does not attribute causes."
+      ],
+      "estimate": 0.08341029373487704,
+      "interval_level": 0.95,
+      "lower_bound": 0.06764098701131077,
+      "method": "95% circular moving-block bootstrap of detrended OLS residuals; 5-year blocks; seed 1042026; 2000 replicates",
+      "unit": "°C/decade",
+      "upper_bound": 0.0979996955747635
+    }
+  },
+  "retrieved_at": "2026-10-04",
+  "snapshot_sha256": "c9ce0750ca93a8241c42fe86cd5bf54d07b28b21ae650b0ae49a206907018cd9",
+  "source_csv": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts%2BdSST.csv",
+  "source_page": "https://data.giss.nasa.gov/gistemp/data_v4.html",
+  "summary": {
+    "endpoint_falsification": {
+      "mann_kendall": {
+        "n": 136,
+        "p_value": 4.370251111832733e-33,
+        "s": 6369,
+        "tau_b": 0.6974856087004437,
+        "z": 11.982852127729286
+      },
+      "outcome": "not_falsified",
+      "period": [
+        1880,
+        2015
+      ],
+      "question": "Does the positive trend persist after excluding 2016-2025?",
+      "sen_slope_c_per_decade": 0.07111111111111111
+    },
+    "mann_kendall": {
+      "n": 146,
+      "p_value": 3.438382410479655e-39,
+      "s": 7740,
+      "tau_b": 0.7346671189353146,
+      "z": 13.096710851083717
+    },
+    "methods": {
+      "interval": "95% circular moving-block bootstrap of detrended OLS residuals; 5-year blocks; seed 1042026; 2000 replicates",
+      "robust_slope": "Theil-Sen median of all pairwise slopes",
+      "trend_test": "two-sided Mann-Kendall normal approximation with tie correction"
+    },
+    "n": 146,
+    "ols_slope_95_ci_c_per_decade": [
+      0.06764098701131077,
+      0.0979996955747635
+    ],
+    "ols_slope_c_per_decade": 0.08341029373487704,
+    "period": [
+      1880,
+      2025
+    ],
+    "recent_window_check": {
+      "mann_kendall": {
+        "n": 56,
+        "p_value": 9.673426356180585e-20,
+        "s": 1287,
+        "tau_b": 0.839814298643509,
+        "z": 9.092559759612248
+      },
+      "period": [
+        1970,
+        2025
+      ],
+      "sen_slope_c_per_decade": 0.2
+    },
+    "sen_slope_c_per_decade": 0.08115942028985508
+  }
+}

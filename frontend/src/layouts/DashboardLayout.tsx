@@ -5,8 +5,6 @@ import {
     Globe,
     Microscope,
     FileCheck,
-    ShoppingBag,
-    DollarSign,
     MessageSquare,
     Menu,
     X,
@@ -22,8 +20,6 @@ const DashboardLayout: React.FC = () => {
         { path: '/app/globe', label: 'Earth Observatory', icon: Globe },
         { path: '/app/research', label: 'Research', icon: Microscope },
         { path: '/app/audit', label: 'Environmental Analysis', icon: FileCheck },
-        { path: '/app/retail', label: 'Applied Research', icon: ShoppingBag },
-        { path: '/app/finance', label: 'Climate Finance', icon: DollarSign },
         { path: '/app/disaster', label: 'Hazards & Resilience', icon: Siren },
         { path: '/app/chat', label: 'Research Crew', icon: MessageSquare },
     ];

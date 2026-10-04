@@ -1,1 +1,1 @@
-from .climate_risk_model import ClimateRiskModel
+"""Shared mathematical models used by the default climate application."""

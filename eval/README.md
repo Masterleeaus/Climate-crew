@@ -1,5 +1,7 @@
 # Evaluation Framework
 
+> **Status:** this general-purpose framework is a prototype. `eval/runner.py` currently produces mock system outputs and does not call the live Climate Crew orchestrator. Its results must not be presented as measured model performance. The bounded, provider-pluggable comparison harness is in [`eval/science_quality/`](science_quality/README.md); its CI adapters are mocks and do not establish a real crew-versus-baseline score.
+
 Comprehensive evaluation framework for multi-agent systems with support for retrieval, synthesis, debate, memory, and thought tree components.
 
 ## Overview
