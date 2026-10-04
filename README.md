@@ -250,6 +250,27 @@ Synthetic, fallback, demonstration and simulated information must remain disting
 
 Individual model providers and data services are integrations rather than permanent architectural dependencies.
 
+## Implemented API surface and code map
+
+The FastAPI composition root is `main.py`. It mounts the following implemented router families:
+
+| Surface | Entry point | Representative tests / evidence |
+|---|---|---|
+| Agent discovery and specialist chat | `src/api/agents.py` | `test/test_agents.py`, `test/test_new_agents.py` |
+| Deep research and adversarial debate | `src/agents/deep_research/` | `test/test_deep_research.py`, `test/test_deep_research_endpoint.py` |
+| Retail audit and causal-analysis experiments | `src/agents/retail_analytics/` | `test/test_retail_analytics.py`, `test/test_retail_endpoint.py` |
+| Climate time-machine simulation | `src/agents/climate_time_machine/` | `test/test_climate_simulator.py`, `test/test_simulator.py` |
+| Climate data-source adapters | `src/api/data.py`, `src/data_sources/` | `test/test_data_sources.py` |
+| Climate finance, disaster, news and media routes | `src/api/climate_finance.py`, `src/api/disaster_management.py`, `src/api/news.py`, `src/api/media.py` | focused tests under `test/` |
+| Evaluation and tracing | `eval/` | `test/test_eval.py`, `test/test_agent_tracing.py` |
+| Browser client | `frontend/src/` | Vite/React application; build separately from the API |
+
+The API exposes `/health` and `/docs` locally. The repository contains a broad mixture of unit, integration, demo and provider-backed tests; the presence of a test file does not mean every external integration is available offline or that a scientific claim has been validated.
+
+### Verification boundary
+
+The repository demonstrates real orchestration, routing, retrieval, memory, simulation and evaluation code. It does not provide a single reproducible benchmark proving that the complete multi-agent workflow is production-ready, scientifically valid, or reliable across all providers. Run the narrowest relevant test and review its credentials/network requirements before interpreting a result.
+
 ---
 
 ## ⚡ Development setup
@@ -262,6 +283,8 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
+
+On Windows PowerShell, activate the environment with `venv\Scripts\Activate.ps1`.
 
 Frontend:
 
