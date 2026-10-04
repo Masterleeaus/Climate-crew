@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/climate-crew-banner.svg" alt="Climate Crew research platform: specialist agents, data adapters, debate, and reviewable reports." width="100%" />
+</p>
+
 # Climate Crew
 
 > Climate Crew brings specialist environmental agents, data adapters, and multi-stage research into one exploration workspace.
