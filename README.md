@@ -30,6 +30,95 @@ The core research path is an explicit sequence: query enrichment, strategic plan
 
 ---
 
+## 🏗️ Technology
+
+| Layer | Technology direction |
+|---|---|
+| Backend | Python, FastAPI, Pydantic |
+| Agent orchestration | Graph and project-native multi-agent orchestration |
+| Retrieval | Vector and provenance-aware research retrieval |
+| Frontend | React, TypeScript, Vite |
+| Geospatial | Interactive Earth observation and mapping |
+| Research data | Climate, environmental, scientific and Earth-observation sources |
+| Models | Configurable cloud and local model providers |
+| Evaluation | Research tracing, judging, replication and ablation |
+
+Individual model providers and data services are integrations rather than permanent architectural dependencies.
+
+## Implemented API surface and code map
+
+The FastAPI composition root is `main.py`. It mounts the following implemented router families:
+
+| Surface | Entry point | Representative tests / evidence |
+|---|---|---|
+| Agent discovery and specialist chat | `src/api/agents.py` | `test/test_agents.py`, `test/test_new_agents.py` |
+| Deep research and adversarial debate | `src/agents/deep_research/` | `test/test_deep_research.py`, `test/test_deep_research_endpoint.py` |
+| Retail audit and causal-analysis experiments | `src/agents/retail_analytics/` | `test/test_retail_analytics.py`, `test/test_retail_endpoint.py` |
+| Climate time-machine simulation | `src/agents/climate_time_machine/` | `test/test_climate_simulator.py`, `test/test_simulator.py` |
+| Climate data-source adapters | `src/api/data.py`, `src/data_sources/` | `test/test_data_sources.py` |
+| Climate finance, disaster, news and media routes | `src/api/climate_finance.py`, `src/api/disaster_management.py`, `src/api/news.py`, `src/api/media.py` | focused tests under `test/` |
+| Evaluation and tracing | `eval/` | `test/test_eval.py`, `test/test_agent_tracing.py` |
+| Browser client | `frontend/src/` | Vite/React application; build separately from the API |
+
+The API exposes `/health` and `/docs` locally. The repository contains a broad mixture of unit, integration, demo and provider-backed tests; the presence of a test file does not mean every external integration is available offline or that a scientific claim has been validated.
+
+### Verification boundary
+
+The repository demonstrates real orchestration, routing, retrieval, memory, simulation and evaluation code. It does not provide a single reproducible benchmark proving that the complete multi-agent workflow is production-ready, scientifically valid, or reliable across all providers. Run the narrowest relevant test and review its credentials/network requirements before interpreting a result.
+
+### Reproducible offline baseline path
+
+The committed `eval/data/benchmark.json` contains three labelled climate queries. The offline baseline uses `EvaluationConfig.from_preset("baseline")`, disables the LLM judge, and runs through `test/test_eval.py` without provider credentials or network access:
+
+```bash
+pytest test/test_eval.py -k offline_baseline
+```
+
+This verifies dataset loading, baseline configuration, mock-runner execution and report plumbing. `eval/runner.py` currently marks `_run_system` as a mock integration, so this path is harness evidence—not a model benchmark, scientific result, or claim about external-provider quality.
+
+---
+
+## ⚡ Development setup
+
+```bash
+git clone https://github.com/Masterleeaus/Climate-crew.git
+cd Climate-crew
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+On Windows PowerShell, activate the environment with `venv\Scripts\Activate.ps1`.
+
+Frontend:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+FastAPI development docs are normally available at `http://localhost:8000/docs`; Vite normally runs at `http://localhost:5173`.
+
+## 🧪 Tests
+
+The repository includes Python test and demo scripts under `test/`. After installing the pinned dependencies, run an appropriate targeted test, for example:
+
+```bash
+pytest test/test_agents.py
+```
+
+Review each test's external-service requirements first; provider and data-source tests may need credentials or network access. A successful test run does not by itself validate scientific claims or external datasets.
+
+Credentials required by external models or data providers should be supplied through environment configuration rather than committed to source control.
+
+---
+
+## Architecture direction
+
+The following sections describe the broader research architecture Climate Crew is designed to grow toward. They are intentionally separated from the implemented code map and quickstart above: treat them as design direction, not proof that persistent evidence-graph storage, numerical climate modelling, independent replication, or a distributed research network are already complete.
+
 ## 🔬 Research lifecycle
 
 ```text
@@ -64,7 +153,7 @@ Discovery Candidate
 Human / Expert Validation
 ```
 
-The durable unit of work is a **Research Project**, not a chat answer. Projects preserve questions, hypotheses, claims, evidence, sources, datasets, observations, methods, models, assumptions, contradictions, replications, uncertainty and research history.
+The intended durable unit of work is a **Research Project**, not a chat answer. The architecture direction describes how a future persisted project model could preserve questions, hypotheses, claims, evidence, sources, datasets, observations, methods, models, assumptions, contradictions, replications, uncertainty and research history.
 
 ## Autonomous Lifecycle Example
 
@@ -79,7 +168,7 @@ A representative Climate Crew investigation follows the research lifecycle descr
 5. **Synthesize without hiding uncertainty.** The project records what is observed, inferred, modelled, disputed, or unknown and assembles a finding for human or expert validation.
 6. **Promote cautiously.** A discovery candidate carries its evidence, methods, contradiction history, uncertainty, replication, and novelty assessment for external evaluation.
 
-**Evidence boundary:** this is the research workflow the project describes, not a claim that every provider integration or scientific stage has been production-validated. Climate Crew’s strongest evidence is its research architecture and its explicit validation boundaries; the repository history did not provide a merged PR example of the software-delivery agent workflow during this profile update.
+**Evidence boundary:** this is the research workflow the project describes, not a claim that every provider integration or scientific stage has been production-validated. Current code demonstrates the multi-stage orchestrator and report pipeline; persistent project storage and independent replication remain architecture direction.
 
 ---
 
@@ -119,9 +208,9 @@ Agents can form temporary research teams around a problem rather than forcing ev
 
 ---
 
-## 🕸️ Evidence Graph
+## 🕸️ Evidence Graph — Architecture Direction
 
-Climate Crew represents research as an interconnected evidence system.
+The intended evidence model represents research as an interconnected system. The current runtime does not persist these entities as a graph; deep-research reports currently return generated content with regex-extracted source links.
 
 ```text
 ResearchProject   ResearchQuestion   Hypothesis   Claim
@@ -230,99 +319,13 @@ Examples include reproducing calculations, analysing datasets, testing parameter
 
 ## 🧬 Research memory & integrity
 
-Research memory preserves previous questions, hypotheses, rejected explanations, evidence, contradictions, datasets, methods, model outputs, replication attempts, uncertainty assessments and findings without confusing remembered information with verified evidence.
+The intended research-memory layer would preserve previous questions, hypotheses, rejected explanations, evidence, contradictions, datasets, methods, model outputs, replication attempts, uncertainty assessments and findings without confusing remembered information with verified evidence.
 
 Research records can preserve source attribution, timestamps, dataset identity, transformations, model and tool involvement, assumptions, agent contributions, critiques, contradictions, replication results and human validation decisions.
 
 Synthetic, fallback, demonstration and simulated information must remain distinguishable from observational evidence throughout the pipeline.
 
 ---
-
-## 🏗️ Technology
-
-| Layer | Technology direction |
-|---|---|
-| Backend | Python, FastAPI, Pydantic |
-| Agent orchestration | Graph and project-native multi-agent orchestration |
-| Retrieval | Vector and provenance-aware research retrieval |
-| Frontend | React, TypeScript, Vite |
-| Geospatial | Interactive Earth observation and mapping |
-| Research data | Climate, environmental, scientific and Earth-observation sources |
-| Models | Configurable cloud and local model providers |
-| Evaluation | Research tracing, judging, replication and ablation |
-
-Individual model providers and data services are integrations rather than permanent architectural dependencies.
-
-## Implemented API surface and code map
-
-The FastAPI composition root is `main.py`. It mounts the following implemented router families:
-
-| Surface | Entry point | Representative tests / evidence |
-|---|---|---|
-| Agent discovery and specialist chat | `src/api/agents.py` | `test/test_agents.py`, `test/test_new_agents.py` |
-| Deep research and adversarial debate | `src/agents/deep_research/` | `test/test_deep_research.py`, `test/test_deep_research_endpoint.py` |
-| Retail audit and causal-analysis experiments | `src/agents/retail_analytics/` | `test/test_retail_analytics.py`, `test/test_retail_endpoint.py` |
-| Climate time-machine simulation | `src/agents/climate_time_machine/` | `test/test_climate_simulator.py`, `test/test_simulator.py` |
-| Climate data-source adapters | `src/api/data.py`, `src/data_sources/` | `test/test_data_sources.py` |
-| Climate finance, disaster, news and media routes | `src/api/climate_finance.py`, `src/api/disaster_management.py`, `src/api/news.py`, `src/api/media.py` | focused tests under `test/` |
-| Evaluation and tracing | `eval/` | `test/test_eval.py`, `test/test_agent_tracing.py` |
-| Browser client | `frontend/src/` | Vite/React application; build separately from the API |
-
-The API exposes `/health` and `/docs` locally. The repository contains a broad mixture of unit, integration, demo and provider-backed tests; the presence of a test file does not mean every external integration is available offline or that a scientific claim has been validated.
-
-### Verification boundary
-
-The repository demonstrates real orchestration, routing, retrieval, memory, simulation and evaluation code. It does not provide a single reproducible benchmark proving that the complete multi-agent workflow is production-ready, scientifically valid, or reliable across all providers. Run the narrowest relevant test and review its credentials/network requirements before interpreting a result.
-
-### Reproducible offline baseline path
-
-The committed `eval/data/benchmark.json` contains three labelled climate queries. The offline baseline uses `EvaluationConfig.from_preset("baseline")`, disables the LLM judge, and runs through `test/test_eval.py` without provider credentials or network access:
-
-```bash
-pytest test/test_eval.py -k offline_baseline
-```
-
-This verifies dataset loading, baseline configuration, mock-runner execution and report plumbing. `eval/runner.py` currently marks `_run_system` as a mock integration, so this path is harness evidence—not a model benchmark, scientific result, or claim about external-provider quality.
-
----
-
-## ⚡ Development setup
-
-```bash
-git clone https://github.com/Masterleeaus/Climate-crew.git
-cd Climate-crew
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-On Windows PowerShell, activate the environment with `venv\Scripts\Activate.ps1`.
-
-Frontend:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-FastAPI development docs are normally available at `http://localhost:8000/docs`; Vite normally runs at `http://localhost:5173`.
-
-## 🧪 Tests
-
-The repository includes Python test and demo scripts under `test/`. After installing the pinned dependencies, run an appropriate targeted test, for example:
-
-```bash
-pytest test/test_agents.py
-```
-
-Review each test's external-service requirements first; provider and data-source tests may need credentials or network access. A successful test run does not by itself validate scientific claims or external datasets.
-
-Credentials required by external models or data providers should be supplied through environment configuration rather than committed to source control.
-
----
-
 ## 🌍 Climate Crew
 
 **Investigate independently. Challenge aggressively. Preserve the evidence. Discover carefully.**
