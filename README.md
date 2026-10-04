@@ -14,27 +14,6 @@ Researchers can investigate a question, challenge candidate findings, and assemb
   <img src="docs/images/B97B6D0D-BF7B-4C95-B84A-B75670FB988E.png" alt="Climate Crew — evidence-driven multi-agent climate research and discovery" width="100%" />
 </p>
 
-## Why Climate Crew is distinctive
-
-The core research path is an explicit sequence: query enrichment, strategic planning, Monte Carlo tree search (MCTS) exploration, advocate/critic/judge debate, and synthesis. That separation makes it easier to inspect where a result came from, swap a specialist, and test a stage independently.
-
-| Capability | Implementation evidence |
-|---|---|
-| Multi-stage research orchestration | `src/agents/deep_research/orchestrator.py` implements enrichment, planning, MCTS exploration, adversarial debate, synthesis, and optional routing/memory hooks. |
-| Domain agent/API surface | `src/api/agents.py` exposes domain-agent discovery, metadata, and chat routes for air quality, wildfire, floods, biodiversity, deforestation, climate anomalies, emissions, earthquakes, oceans, and satellite fusion. |
-| Environmental data integration | `src/api/data.py` and `src/data_sources/` provide the data-source adapter surface used by climate and research workflows. |
-| Scenario exploration and visual artifacts | `src/agents/climate_time_machine/` generates best/worst/most-likely LLM scenarios, domain reports, image sequences, and GIF artifacts for a supplied event. |
-| Evaluation and browser experience | `eval/` and `test/test_eval.py` provide a scoped offline harness; `main.py` composes the FastAPI app and `frontend/src/` contains the Vite/React client. |
-
-<p align="center">
-  <img src="docs/images/1C6C37B3-7DA3-4F08-820E-3341C0CA952F.png" alt="Climate Crew platform architecture" width="100%" />
-</p>
-
-> **Research principle:** agreement is not evidence. The platform makes debate and synthesis visible so researchers can decide what deserves further scrutiny.
-
-**Evidence boundary:** the current codebase demonstrates real multi-stage orchestration, specialist routing, data adapters, report synthesis, and scenario visualization. Persistent `ResearchProject`/evidence-graph storage and independent replication remain next-stage architecture described later in this README. The deep-research report currently returns generated content plus regex-extracted source links. If every debate verdict rejects a candidate, the orchestrator currently falls back to unverified candidates before synthesis; the Time Machine produces LLM-generated scenarios and visual artifacts rather than numerical climate forecasts.
-
-
 ## Measured evidence
 
 Climate Crew does **not** currently claim a production or scientific-performance benchmark. The repository's reproducible evidence is narrower and is labelled accordingly.
@@ -88,6 +67,26 @@ Distinguishing implementation choices:
 
 
 ---
+
+## Verified capabilities
+
+The core research path is an explicit sequence: query enrichment, strategic planning, Monte Carlo tree search (MCTS) exploration, advocate/critic/judge debate, and synthesis. That separation makes it easier to inspect where a result came from, swap a specialist, and test a stage independently.
+
+| Capability | Implementation evidence |
+|---|---|
+| Multi-stage research orchestration | `src/agents/deep_research/orchestrator.py` implements enrichment, planning, MCTS exploration, adversarial debate, synthesis, and optional routing/memory hooks. |
+| Domain agent/API surface | `src/api/agents.py` exposes domain-agent discovery, metadata, and chat routes for air quality, wildfire, floods, biodiversity, deforestation, climate anomalies, emissions, earthquakes, oceans, and satellite fusion. |
+| Environmental data integration | `src/api/data.py` and `src/data_sources/` provide the data-source adapter surface used by climate and research workflows. |
+| Scenario exploration and visual artifacts | `src/agents/climate_time_machine/` generates best/worst/most-likely LLM scenarios, domain reports, image sequences, and GIF artifacts for a supplied event. |
+| Evaluation and browser experience | `eval/` and `test/test_eval.py` provide a scoped offline harness; `main.py` composes the FastAPI app and `frontend/src/` contains the Vite/React client. |
+
+<p align="center">
+  <img src="docs/images/1C6C37B3-7DA3-4F08-820E-3341C0CA952F.png" alt="Climate Crew platform architecture" width="100%" />
+</p>
+
+> **Research principle:** agreement is not evidence. The platform makes debate and synthesis visible so researchers can decide what deserves further scrutiny.
+
+**Evidence boundary:** the current codebase demonstrates real multi-stage orchestration, specialist routing, data adapters, report synthesis, and scenario visualization. Persistent `ResearchProject`/evidence-graph storage and independent replication remain next-stage architecture described later in this README. The deep-research report currently returns generated content plus regex-extracted source links. If every debate verdict rejects a candidate, the orchestrator currently falls back to unverified candidates before synthesis; the Time Machine produces LLM-generated scenarios and visual artifacts rather than numerical climate forecasts.
 
 ## 🏗️ Technology
 
