@@ -3,12 +3,10 @@ import { CacheProvider } from './contexts/CacheContext';
 import DashboardLayout from './layouts/DashboardLayout';
 import OverviewPage from './pages/OverviewPage';
 import DeepResearchPage from './pages/DeepResearchPage';
-import RetailPage from './pages/RetailPage';
 import AuditPage from './pages/AuditPage';
 import TimeMachinePage from './pages/TimeMachinePage';
 import AgentUplinkPage from './pages/AgentUplinkPage';
 import LandingPage from './pages/LandingPage';
-import ClimateFinancePage from './pages/ClimateFinancePage';
 import DisasterPage from './pages/DisasterPage';
 import IntelSwarmPage from './pages/IntelSwarmPage';
 
@@ -27,8 +25,6 @@ function App() {
             <Route path="research" element={<DeepResearchPage />} />
             <Route path="audit" element={<AuditPage />} />
             <Route path="timemachine" element={<TimeMachinePage />} />
-            <Route path="retail" element={<RetailPage />} />
-            <Route path="finance" element={<ClimateFinancePage />} />
             <Route path="disaster" element={<DisasterPage />} />
             <Route path="chat" element={<AgentUplinkPage />} />
             {/* Redirect /app/* to /app */}

@@ -9,9 +9,7 @@ from .noaa_ocean import NOAAOceanClient, CoralReefWatchClient, OpenMeteoMarineCl
 from .gbif import GBIFClient
 from .climate_trace import ClimateTraceClient
 
-# Climate-Finance Data Sources (REAL APIs)
-from .yahoo_finance import YahooFinanceClient
-from .esg_data import FinnhubClient, AlphaVantageClient, ESGDataClient
+# Climate policy and regulatory data sources
 from .regulatory_data import CarbonPricingClient, RegulatoryDataClient
 
 # Disaster Management Data Sources
@@ -33,11 +31,7 @@ __all__ = [
     "OpenMeteoMarineClient",
     "GBIFClient",
     "ClimateTraceClient",
-    # Climate-Finance
-    "YahooFinanceClient",
-    "FinnhubClient",
-    "AlphaVantageClient",
-    "ESGDataClient",
+    # Climate policy and regulatory data
     "CarbonPricingClient",
     "RegulatoryDataClient",
     # Disaster Management

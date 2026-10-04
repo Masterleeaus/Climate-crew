@@ -1,0 +1,59 @@
+name: Publish archived binary assets
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: Release tag for the archived asset bundle
+        required: true
+        default: legacy-assets-v1.0.0
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ASSET_SOURCE_SHA: 50dcd4dfd4aefab233a548faf400e46353291cb3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Extract original binary files from repository history
+        run: |
+          set -euo pipefail
+          archive_dir="$(mktemp -d)"
+          git archive "$ASSET_SOURCE_SHA" \
+            assets docs/images "docs/ClimateX.ai Features .pdf" \
+            artifacts/reports models frontend/public/docs/images \
+            | tar -xf - -C "$archive_dir"
+          find "$archive_dir" -type f -size 0 -delete
+          mkdir -p dist
+          tar -czf dist/climate-crew-legacy-assets.tar.gz \
+            -C "$archive_dir" \
+            assets docs/images "docs/ClimateX.ai Features .pdf" \
+            artifacts/reports models frontend/public/docs/images
+          sha256sum dist/climate-crew-legacy-assets.tar.gz > dist/SHA256SUMS.txt
+      - name: Publish or replace the release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ inputs.tag_name }}
+        run: |
+          set -euo pipefail
+          NOTES="dist/release-notes.md"
+          cat > "$NOTES" <<'NOTES'
+          Archived images, audit reports, and retail prototype model files retained for historical traceability.
+          These files are not loaded by the default Climate Crew application. The zero-byte audit PDF was excluded.
+          The archive was extracted from the repository snapshot recorded in .github/workflows/release-legacy-assets.yml.
+          See PROVENANCE.md and docs/release-assets.md.
+          NOTES
+          if gh release view "$TAG_NAME" >/dev/null 2>&1; then
+            gh release upload "$TAG_NAME" dist/climate-crew-legacy-assets.tar.gz dist/SHA256SUMS.txt --clobber
+          else
+            gh release create "$TAG_NAME" dist/climate-crew-legacy-assets.tar.gz dist/SHA256SUMS.txt \
+              --title "Climate Crew archived assets" --notes-file "$NOTES"
+          fi

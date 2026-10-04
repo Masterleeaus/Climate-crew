@@ -15,22 +15,6 @@ def test_root():
     assert response.status_code == 200
     assert "message" in response.json()
 
-# --- Retail Analytics ---
-def test_retail_audit():
-    print("\nTesting /retail/audit ...")
-    # Use a location that should work (e.g., California redwoods)
-    payload = {"latitude": 41.3, "longitude": -124.0}
-    response = client.post("/retail/audit", json=payload)
-    
-    if response.status_code == 200:
-        data = response.json()
-        assert "causal_graph" in data
-        assert "action_plan" in data
-        assert "dashboard_payload" in data
-        print(" [PASS] Retail Audit")
-    else:
-        print(f" [FAIL] Retail Audit: {response.status_code} - {response.text}")
-
 # --- Domain Agents ---
 def test_all_agents():
     print("\nTesting /agents endpoints ...")

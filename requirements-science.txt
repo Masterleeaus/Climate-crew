@@ -1,0 +1,3 @@
+# Minimal environment for the offline scientific slice, reproducibility script, and CI tests.
+pydantic==2.12.5
+pytest==9.0.2

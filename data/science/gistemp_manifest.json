@@ -1,0 +1,16 @@
+{
+  "dataset": "NASA GISTEMP v4 global Land-Ocean Temperature Index",
+  "source_page": "https://data.giss.nasa.gov/gistemp/data_v4.html",
+  "source_csv": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts%2BdSST.csv",
+  "retrieved_at": "2026-10-04",
+  "snapshot_sha256": "c9ce0750ca93a8241c42fe86cd5bf54d07b28b21ae650b0ae49a206907018cd9",
+  "analysis_column": "J-D",
+  "unit": "degrees Celsius anomaly",
+  "baseline_period": "1951-1980",
+  "analysis_period": [1880, 2025],
+  "notes": [
+    "The CSV is checked in so the analysis and CI run without network access.",
+    "The source is periodically revised; this snapshot is deliberately pinned.",
+    "The 2026 row is incomplete and excluded; 2025 is the latest complete year in this snapshot."
+  ]
+}
