@@ -1,29 +1,32 @@
-# Climate Crew Research Platform
+# Climate Crew
 
-## Product architecture and engineering highlights
+> Evidence-driven multi-agent research for climate, environmental, and Earth-system questions.
 
-A climate and environmental research platform built around independent investigation, attributable evidence, adversarial challenge, and reproducible scientific work.
-
-- **Architecture:** Specialist research agents connect to literature, datasets, geospatial and environmental sources through an evidence graph that preserves claims, sources, methods, assumptions, contradictions, and uncertainty.
-- **Distinctive engineering:** Its research workflow includes competing hypotheses, falsification, replication, uncertainty analysis, and human validation; agent consensus is deliberately not treated as evidence.
-
-## Evidence-driven multi-agent climate research and discovery
+Climate Crew helps climate researchers and engineering teams turn a complex environmental question into a reviewable research project. It brings specialist agents, literature and data sources, geospatial context, simulations, and human validation into one traceable workflow—so a finding can be challenged, replicated, and handed to an expert rather than disappearing into a chat transcript.
 
 <p align="center">
   <img src="docs/images/B97B6D0D-BF7B-4C95-B84A-B75670FB988E.png" alt="Climate Crew — evidence-driven multi-agent climate research and discovery" width="100%" />
 </p>
 
-Climate Crew is a multi-agent scientific research platform for investigating climate, environmental and Earth-system problems. It coordinates specialised research agents, observational data, scientific literature, datasets, models, simulations and human expertise through a provenance-aware process designed to produce findings that can be challenged, reproduced and validated.
+## Why Climate Crew is distinctive
 
-> **Project status:** This repository is an active research platform and prototype. The architecture and capability descriptions below express intended system scope; validate each integration and scientific workflow against its implementation and tests before relying on outputs.
+The platform treats a research project—not a chat answer—as the durable unit of work. Its evidence graph connects claims to sources, datasets, methods, assumptions, contradictions, replication attempts, and uncertainty, while the workflow separates investigation, challenge, synthesis, and validation.
 
-> **Mission:** accelerate climate and environmental discovery without lowering the standard of evidence required to trust the result.
-
-**Agreement is not evidence.** Agents may reason, debate and collaborate, but scientific claims advance because their supporting evidence survives scrutiny.
+| Capability | Implementation evidence |
+|---|---|
+| Evidence-driven multi-agent research | `src/api/agents.py` and `src/agents/deep_research/` provide specialist routing, research and adversarial challenge surfaces. |
+| Climate and environmental data integration | `src/api/data.py` and `src/data_sources/` contain source adapters for research and environmental data workflows. |
+| Simulation and domain experiments | `src/agents/climate_time_machine/` and `src/agents/retail_analytics/` provide implemented simulation and analytical experiment surfaces. |
+| Evaluation and tracing | `eval/` and `test/test_eval.py` provide configuration, dataset loading, metrics, tracing and an explicitly mock-only offline baseline path. |
+| API and browser experience | `main.py` composes the FastAPI application; `frontend/src/` contains the Vite/React client. |
 
 <p align="center">
   <img src="docs/images/1C6C37B3-7DA3-4F08-820E-3341C0CA952F.png" alt="Climate Crew platform architecture" width="100%" />
 </p>
+
+> **Research principle:** agreement is not evidence. Agents can reason, debate, and collaborate, but a claim advances because its supporting evidence survives scrutiny.
+
+**Current evidence:** the repository contains a substantial research platform and prototype architecture. Provider-backed workflows and scientific validity still require environment-specific validation, but the core routing, evidence, data-source, simulation, and evaluation surfaces are implemented and reviewable.
 
 ---
 
