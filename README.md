@@ -1,8 +1,8 @@
 # Climate Crew
 
-> A multi-stage climate research platform that coordinates specialist agents, data adapters, adversarial review, synthesis, and visual scenario exploration.
+> Climate Crew brings specialist environmental agents, data adapters, and multi-stage research into one exploration workspace.
 
-Climate Crew is built for climate researchers and engineering teams who need a structured way to investigate environmental questions beyond a single chat response. Its Python/FastAPI platform routes a question through specialist research stages, connects domain agents to external data, and returns reviewable reports and artifacts that can guide the next round of analysis.
+Researchers can investigate a question, challenge candidate findings, and assemble reports with extracted source links through a FastAPI backend and React interface. The platform is built for climate and engineering teams that need a structured path beyond a single chat response, with scenario artifacts and staged outputs that can guide the next round of analysis.
 
 <p align="center">
   <img src="docs/images/B97B6D0D-BF7B-4C95-B84A-B75670FB988E.png" alt="Climate Crew — evidence-driven multi-agent climate research and discovery" width="100%" />
@@ -26,7 +26,7 @@ The core research path is an explicit sequence: query enrichment, strategic plan
 
 > **Research principle:** agreement is not evidence. The platform makes debate and synthesis visible so researchers can decide what deserves further scrutiny.
 
-**Evidence boundary:** the current codebase demonstrates real multi-stage orchestration, specialist routing, data adapters, report synthesis, and scenario visualization. Persistent `ResearchProject`/evidence-graph storage and independent replication remain next-stage architecture described later in this README. The deep-research report currently returns generated content plus regex-extracted source links, and rejected debate findings can fall back to unverified candidates; the Time Machine produces LLM-generated scenarios and visual artifacts rather than numerical climate forecasts.
+**Evidence boundary:** the current codebase demonstrates real multi-stage orchestration, specialist routing, data adapters, report synthesis, and scenario visualization. Persistent `ResearchProject`/evidence-graph storage and independent replication remain next-stage architecture described later in this README. The deep-research report currently returns generated content plus regex-extracted source links. If every debate verdict rejects a candidate, the orchestrator currently falls back to unverified candidates before synthesis; the Time Machine produces LLM-generated scenarios and visual artifacts rather than numerical climate forecasts.
 
 ---
 
