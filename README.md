@@ -6,6 +6,8 @@
 
 > Climate Crew brings specialist environmental agents, data adapters, and multi-stage research into one exploration workspace.
 
+## Overview
+
 Researchers can investigate a question, challenge candidate findings, and assemble reports with extracted source links through a FastAPI backend and React interface. The platform is built for climate and engineering teams that need a structured path beyond a single chat response, with scenario artifacts and staged outputs that can guide the next round of analysis.
 
 <p align="center">
@@ -31,6 +33,59 @@ The core research path is an explicit sequence: query enrichment, strategic plan
 > **Research principle:** agreement is not evidence. The platform makes debate and synthesis visible so researchers can decide what deserves further scrutiny.
 
 **Evidence boundary:** the current codebase demonstrates real multi-stage orchestration, specialist routing, data adapters, report synthesis, and scenario visualization. Persistent `ResearchProject`/evidence-graph storage and independent replication remain next-stage architecture described later in this README. The deep-research report currently returns generated content plus regex-extracted source links. If every debate verdict rejects a candidate, the orchestrator currently falls back to unverified candidates before synthesis; the Time Machine produces LLM-generated scenarios and visual artifacts rather than numerical climate forecasts.
+
+
+## Measured evidence
+
+Climate Crew does **not** currently claim a production or scientific-performance benchmark. The repository's reproducible evidence is narrower and is labelled accordingly.
+
+| Evidence | Current status | Reproduce / inspect |
+| --- | --- | --- |
+| Offline evaluation harness | **Implemented** against 3 labelled climate queries | `pytest test/test_eval.py -k offline_baseline` |
+| Baseline configuration | **Implemented** with LLM judge disabled | `eval/config.py`, `test/test_eval.py` |
+| Evaluation runner plumbing | **Implemented**, but `_run_system` is currently a mock integration | `eval/runner.py` |
+| Multi-stage deep-research orchestration | **Implemented in source** | `src/agents/deep_research/orchestrator.py` |
+| Persistent evidence graph / independent replication | **Architecture direction, not complete** | design sections below |
+| Scientific validity / production reliability | **Not claimed** | requires future benchmark and external validation |
+
+This is intentionally conservative. The offline path proves that the dataset, configuration, mock runner, and report plumbing work together; it does **not** establish that the full multi-agent system improves scientific accuracy.
+
+## What is new
+
+Climate Crew's technical signature is a staged climate-research workflow that keeps **planning, exploration, adversarial challenge, and synthesis** separate enough to inspect independently.
+
+```text
+Research question
+      ↓
+Query enrichment
+      ↓
+Strategic planning
+      ↓
+MCTS exploration
+      ↓
+Advocate / Critic / Judge
+      ↓
+Synthesis
+      ↓
+Reviewable report + extracted sources
+```
+
+Distinguishing implementation choices:
+
+- **Stage separation** — enrichment, planning, exploration, debate, and synthesis are explicit orchestration stages rather than one long model call.
+- **Adversarial review** — advocate/critic/judge roles can challenge candidate findings before synthesis.
+- **Environmental specialization** — agent/API surfaces cover climate, air quality, wildfire, floods, biodiversity, deforestation, emissions, oceans, earthquakes, and satellite fusion.
+- **Data-adapter boundary** — environmental sources are exposed through dedicated adapters instead of being hidden inside prompts.
+- **Honest fallback visibility** — the README explicitly records that rejected-candidate fallback and Time Machine outputs are limitations, not scientific validation.
+
+### Evidence status
+
+- **Implemented:** orchestration, specialist routing, environmental data adapters, report synthesis, browser client, and scenario visualisation.
+- **Test harness implemented:** scoped offline evaluation path with mock system integration.
+- **Experimental:** provider-backed research quality and scenario generation.
+- **Planned / architecture direction:** persistent evidence graph, independent replication, durable research projects, and broader scientific validation.
+- **Not claimed:** validated climate forecasting, production readiness, or discovery-grade scientific accuracy.
+
 
 ---
 
